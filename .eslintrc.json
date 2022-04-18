@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never",
+                "vue": "never"
+            }
+        ],
+        "import/no-unresolved": 0,
+        "indent": "off",
+        "quotes": "off",
+        "semi": "off",
+        "linebreak-style": 0,
+        "no-param-reassign": 0,
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "off",
+        "max-len": "off",
+        "import/extensions": 0
+    }
+}
