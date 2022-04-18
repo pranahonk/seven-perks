@@ -3,17 +3,18 @@ import {MdArrowDropDown} from "react-icons/md"
 import "./Select.scss"
 import PropTypes from "prop-types";
 
-const Select = ({options}) => {
+const Select = ({options, onChange}) => {
   const [visibility, setVisibility] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
   const setSelected = (value) =>{
-      // setSelectedOption(option)
-      setSelectedOption(value)
+      setSelectedOption(value.value)
+      onChange(value.key)
   }
 
   useEffect(()=>{
-      setSelectedOption(options?.[0]?.value)
+      setSelectedOption(options?.[0]?.value);
+      onChange(options?.[0]?.key);
   }, [])
 
 
@@ -46,7 +47,7 @@ const Select = ({options}) => {
                                           : null
                                   }
                                   onClick={() =>
-                                      setSelected(option.value)
+                                      setSelected(option)
                                   }
                               >
                                   {option.value}
@@ -60,7 +61,8 @@ const Select = ({options}) => {
 };
 
 Select.propTypes = {
-    options:  PropTypes.array
+    options:  PropTypes.array,
+    onChange: PropTypes.any
 };
 
 export default Select;

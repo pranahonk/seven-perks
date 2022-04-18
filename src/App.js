@@ -1,15 +1,18 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import "./App.scss";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import Select from "./components/select";
 import Api from "./API/service";
+import Content from "./pages/Content";
 
 
 
 const App = () => {
     const api = new Api;
+    const [selectedOption, setSelectedOption] = useState("");
+    const [newsData, setNewsData] = useState([]);
 
     const options = [
         {
@@ -26,17 +29,19 @@ const App = () => {
         }
     ];
 
-     const fetchData = () => {
-       api.getNews("newest")
+     const fetchData = (orderBy) => {
+       api.getNews(orderBy)
            .then((res)=>{
-               console.log(res)
+               setNewsData(res.data.response.results)
+               console.log(res.data.response.results);
            })
            .catch((err) => console.log(err));
      }
 
      useEffect(()=>{
-         fetchData()
-     })
+         if (selectedOption) fetchData(selectedOption);
+         console.log(selectedOption)
+     }, [selectedOption])
 
       return (
           <div>
@@ -52,11 +57,11 @@ const App = () => {
                           </button>
                       </div>
                       <div className="col-2">
-                          <Select options={options} />
+                          <Select options={options} onChange={setSelectedOption} />
                       </div>
                   </div>
+                  <Content newsData={newsData} />
               </div>
-
               <Footer />
           </div>
       );
