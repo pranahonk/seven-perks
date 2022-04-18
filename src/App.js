@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import "./App.scss";
 import Header from "./components/header";
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import Select from "./components/select";
 import Api from "./API/service";
@@ -29,8 +29,8 @@ const App = () => {
         }
     ];
 
-     const fetchData = (orderBy) => {
-       api.getNews(orderBy)
+     const fetchData = (orderBy, length) => {
+       api.getNews(orderBy, length)
            .then((res)=>{
                setNewsData(res.data.response.results)
                console.log(res.data.response.results);
@@ -39,7 +39,7 @@ const App = () => {
      }
 
      useEffect(()=>{
-         if (selectedOption) fetchData(selectedOption);
+         if (selectedOption) fetchData(selectedOption, 5);
          console.log(selectedOption)
      }, [selectedOption])
 
@@ -62,7 +62,7 @@ const App = () => {
                   </div>
                   <Content newsData={newsData} />
               </div>
-              <Footer />
+              {/*<Footer />*/}
           </div>
       );
 }

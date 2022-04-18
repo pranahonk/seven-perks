@@ -21,8 +21,8 @@ export default class Api {
         return this.client;
     };
 
-    getNews = (orderBy = "newest") => {
-        return this.init().get(`/search?order-by=${orderBy}&api-key=${this.api_key}`);
+    getNews = (orderBy = "newest", pageSize = 5) => {
+        return this.init().get(`/search?order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
     };
 
     addNewUser = (data) => {
