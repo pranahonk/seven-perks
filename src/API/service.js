@@ -28,4 +28,8 @@ export default class Api {
     getSportsNews = (orderBy = "newest", pageSize = 5) => {
         return this.init().get(`/sport?order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
     };
+
+    getDetailNews = (detail) => {
+        return this.init().get(`${this.api_url}/${detail}?api-key=${this.api_key}`)
+    }
 }

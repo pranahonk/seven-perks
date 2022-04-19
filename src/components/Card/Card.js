@@ -1,10 +1,17 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ data = [], isSport , height = "260"}) => {
+    let navigate = useNavigate();
+
+    const goToDetail = (x) => {
+        navigate(`${x}`);
+
+    }
 
     return (
-        <div>
+        <div onClick={()=> goToDetail(data?.id)} style={{cursor: "pointer"}}>
             <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
             <div className="Content-Card-xl">
                 <div className="Content-title">

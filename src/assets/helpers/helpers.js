@@ -14,3 +14,34 @@ export const setColor = (category) =>{
 
 }
 
+export const convertDate = (date) => {
+    return date.replace(/T.*/,'').split('-').reverse().join(' ')
+}
+
+export const isoStringToDate = (s) => {
+    const b = s.split(/\D/);
+    return new Date(Date.UTC(b[0], --b[1], b[2], b[3]||0, b[4]||0, b[5]||0, b[6]||0));
+}
+
+export const getDayOfWeek = (s) =>{
+    const getNum = isoStringToDate(s).getDay()
+
+    switch (getNum){
+        case 0:
+            return "Sun "
+        case 1:
+            return "Mon "
+        case 2:
+            return "Tue "
+        case 3:
+            return "Wed "
+        case 4:
+            return "Thu "
+        case 5:
+            return "Fri "
+        case 6:
+            return "Sat "
+
+
+    }
+}
