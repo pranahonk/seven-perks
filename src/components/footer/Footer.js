@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./Footer.scss"
 import PropTypes from "prop-types";
 
 class Footer extends Component {
   render() {
-    return <div>Footer</div>;
+    return <div className="Footer">Footer</div>;
   }
 }
 

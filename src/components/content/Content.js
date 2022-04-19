@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from "prop-types";
-import Card from "../components/Card/Card";
+import Card from "../Card/Card";
 import "./Content.scss"
-import {setColor} from "../assets/helpers/helpers"
+import {setColor} from "../../assets/helpers/helpers"
 
 
 const Content = ({newsData, color = "#F50057"}) => {
