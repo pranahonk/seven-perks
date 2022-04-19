@@ -6,6 +6,8 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 import Select from "./components/select";
 import Api from "./API/service";
 import Content from "./pages/Content";
+import Card from "./components/Card/Card";
+
 
 
 
@@ -13,6 +15,7 @@ const App = () => {
     const api = new Api;
     const [selectedOption, setSelectedOption] = useState("");
     const [newsData, setNewsData] = useState([]);
+    const [sportsData, setSportsData] = useState([]);
 
     const options = [
         {
@@ -29,7 +32,7 @@ const App = () => {
         }
     ];
 
-     const fetchData = (orderBy, length) => {
+     const fetchNewsData = (orderBy, length) => {
        api.getNews(orderBy, length)
            .then((res)=>{
                setNewsData(res.data.response.results)
@@ -38,8 +41,17 @@ const App = () => {
            .catch((err) => console.log(err));
      }
 
+     const fetchSportsData = (orderBy, length) =>{
+         api.getSportsNews(orderBy, length)
+             .then((res)=>{
+                 console.log(res)
+             })
+             .catch((err) => console.log(err));
+     }
+
      useEffect(()=>{
-         if (selectedOption) fetchData(selectedOption, 5);
+         if (selectedOption) fetchNewsData(selectedOption, 8);
+         if (selectedOption) fetchSportsData(selectedOption, 3);
          console.log(selectedOption)
      }, [selectedOption])
 
@@ -61,6 +73,21 @@ const App = () => {
                       </div>
                   </div>
                   <Content newsData={newsData} />
+                  <div className="row mt-3">
+                      {
+                          newsData.slice(5).map((data, index) =>{
+                              return(
+                                  <div key={index} className="col-4">
+                                      <Card data={data} />
+                                  </div>
+                              )
+                          })
+                      }
+
+                  </div>
+                  <div className="App-headline">
+                      Sports
+                  </div>
               </div>
               {/*<Footer />*/}
           </div>

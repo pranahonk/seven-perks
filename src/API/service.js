@@ -25,7 +25,7 @@ export default class Api {
         return this.init().get(`/search?order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
     };
 
-    addNewUser = (data) => {
-        return this.init().post("/users", data);
+    getSportsNews = (orderBy = "newest", pageSize = 5) => {
+        return this.init().get(`/mainsection/sport?order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
     };
 }

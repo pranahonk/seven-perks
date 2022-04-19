@@ -1,7 +1,26 @@
+.Content-Card-xl{
+  background: rgba(9, 53, 123, 0.9);
+  color: white;
+  padding: 10px;
+  height: auto;
+  min-height: 130px;
+}
+
 .Content-Card{
   background: rgba(9, 53, 123, 0.9);
   color: white;
   padding: 10px;
+  height: auto;
+  min-height: 206px;
+}
+
+.Content-Card-small{
+  background: rgba(9, 53, 123, 0.9);
+  color: white;
+  padding: 10px;
+  height: auto;
+  min-height: 230px;
+
 }
 
 .Content-title{
