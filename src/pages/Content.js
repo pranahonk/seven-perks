@@ -7,15 +7,20 @@ import {setColor} from "../assets/helpers/helpers"
 
 const Content = ({newsData, color = "#F50057"}) => {
 
+    const setLineColor = (index) => {
+        setColor(newsData[index]?.pillarName?.toLowerCase())
+    }
+
+
     return (
         <div className="row mt-4">
             <div className="col-6">
-                <div style={{borderBottom: `3px solid ${color}`}}>
+                <div style={{borderBottom: `3px solid ${setLineColor(0)}`}}>
                     <Card data={newsData[0]}/>
                 </div>
             </div>
             <div className="col-3">
-                <div style={{borderBottom: `3px solid ${setColor(newsData[1]?.pillarName?.toLowerCase())}`}}>
+                <div style={{borderBottom: `3px solid ${setLineColor(1)}`}}>
                     <div style={{borderBottom: `3px solid ${color}`}}>
                         <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
                         <div className="Content-Card">
@@ -27,7 +32,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-2" style={{borderBottom: `3px solid ${color}`}}>
+                <div className="mt-2" style={{borderBottom: `3px solid ${setLineColor(2)}`}}>
                     <div className="Content-Card-small">
                         <div className="Content-title">
                             {
@@ -38,7 +43,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                 </div>
             </div>
             <div className="col-3">
-                <div style={{borderBottom: `3px solid ${setColor(newsData[1]?.pillarName?.toLowerCase())}`}}>
+                <div style={{borderBottom: `3px solid ${setLineColor(3)}`}}>
                     <div style={{borderBottom: `3px solid ${color}`}}>
                         <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
                         <div className="Content-Card">
@@ -50,7 +55,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-2" style={{borderBottom: `3px solid ${color}`}}>
+                <div className="mt-2" style={{borderBottom: `3px solid ${setLineColor(4)}`}}>
                     <div className="Content-Card-small">
                         <div className="Content-title">
                             {
