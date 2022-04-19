@@ -1,25 +1,37 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
-const Card = ({ data = []}) => {
+const Card = ({ data = [], isSport , height = "260"}) => {
+
+
+    useEffect(()=>{
+        console.log(isSport)
+
+    }, [isSport])
+
     return (
         <div>
             <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
-            <div className="Content-Card-xl">
+            <div className="Content-Card-xl"ss>
                 <div className="Content-title">
                     {data?.webTitle}
                 </div>
-                <div className="mt-1">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa illo sed vero. Distinctio dolore earum eius
-                </div>
+                {
+                    !isSport &&
+                    <div className="mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </div>
+                }
             </div>
         </div>
   );
 };
 
 Card.propTypes = {
-    color: PropTypes.string,
-    data: PropTypes.any
+    data: PropTypes.any,
+    isSport: PropTypes.bool.isRequired,
+    height: PropTypes.string
+
 };
 
 export default Card;

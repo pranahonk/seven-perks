@@ -44,7 +44,8 @@ const App = () => {
      const fetchSportsData = (orderBy, length) =>{
          api.getSportsNews(orderBy, length)
              .then((res)=>{
-                 console.log(res)
+                 setSportsData(res.data.response.results)
+                 console.log(res.data.response.results)
              })
              .catch((err) => console.log(err));
      }
@@ -78,15 +79,27 @@ const App = () => {
                           newsData.slice(5).map((data, index) =>{
                               return(
                                   <div key={index} className="col-4">
-                                      <Card data={data} />
+                                      <Card data={data}  />
                                   </div>
                               )
                           })
                       }
 
                   </div>
-                  <div className="App-headline">
+                  <div className="App-headline mt-4">
                       Sports
+                  </div>
+                  <div className="row mt-3">
+                      {
+                          sportsData.map((data, index) =>{
+                              return(
+                                  <div key={index} className="col-4">
+                                      <Card data={data} isSport />
+                                  </div>
+                              )
+                          })
+                      }
+
                   </div>
               </div>
               {/*<Footer />*/}
