@@ -45,3 +45,9 @@ export const getDayOfWeek = (s) =>{
 
     }
 }
+
+
+export const getHoursAndMinutes = (date) => {
+    const d = new Date(date);
+    return ` ${d.getHours()}.${d.getMinutes()}`
+}
