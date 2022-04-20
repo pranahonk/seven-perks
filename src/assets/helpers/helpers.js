@@ -15,7 +15,7 @@ export const setColor = (category) =>{
 }
 
 export const convertDate = (date) => {
-    return date.replace(/T.*/,'').split('-').reverse().join(' ')
+    return date.replace(/T.*/,'').split('-').reverse().join('/')
 }
 
 export const isoStringToDate = (s) => {
@@ -51,3 +51,23 @@ export const getHoursAndMinutes = (date) => {
     const d = new Date(date);
     return ` ${d.getHours()}.${d.getMinutes()}`
 }
+
+export const setSessionStorage = (data) => {
+
+    let exist =  sessionStorage.getItem('bookmark');
+
+    if (exist){
+        const search =  JSON.parse(exist).findIndex(element => element.id === data.id);
+
+        if(search === -1){
+            let parsing = JSON.parse(exist);
+            parsing.push(data)
+            sessionStorage.setItem('bookmark', JSON.stringify(parsing));
+        }
+
+    }else{
+        sessionStorage.setItem('bookmark', JSON.stringify([data]));
+    }
+
+}
+

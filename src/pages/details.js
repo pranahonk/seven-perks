@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Api from "../API/service";
 import "./detail.scss";
-import {convertDate, getDayOfWeek, getHoursAndMinutes} from "../assets/helpers/helpers";
+import {convertDate, getDayOfWeek, getHoursAndMinutes, setSessionStorage} from "../assets/helpers/helpers";
 
 function Details(props) {
     const api = new Api;
@@ -23,6 +23,10 @@ function Details(props) {
         fetchNewsData(pathname)
     }, [])
 
+    const addToBookMark = (data) => {
+        setSessionStorage(data)
+    }
+
     return (
         detail ?
         <div>
@@ -30,7 +34,7 @@ function Details(props) {
                 <div className="row">
                     <div className="col-8">
                         <div className="mt-5">
-                            <button className="btn-bookmark">
+                            <button className="btn-bookmark" onClick={()=> addToBookMark(detail)} style={{cursor: "pointer"}}>
                                 <BsFillBookmarkFill color="white" /> &nbsp;&nbsp; ADD BOOKMARK
                             </button>
                         </div>
