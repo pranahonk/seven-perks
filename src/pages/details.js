@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Api from "../API/service";
@@ -12,7 +12,6 @@ import {
 } from "../assets/helpers/helpers";
 import SnackbarContext from "../components/snackbar/snackbar-context";
 import Snackbar from "../components/snackbar";
-import Spinner from "../components/spinner";
 
 function Details(props) {
     const api = new Api;
