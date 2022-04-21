@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Api from "../API/service";
 import "./detail.scss";
@@ -9,6 +9,7 @@ import Snackbar from "../components/snackbar";
 import Body from "../components/body/body";
 import {useDispatch, useSelector} from "react-redux";
 import {addToBookmark, deleteBookmark} from "../store/actions/counterActions";
+import Spinner from "../components/spinner";
 
 
 function Details(props) {
@@ -48,7 +49,7 @@ function Details(props) {
     }, [detail, counter])
 
     useEffect(()=>{
-        fetchNewsData(pathname)
+        fetchNewsData(pathname.replace("/bookmark", ""))
     }, []);
 
 
@@ -111,7 +112,7 @@ function Details(props) {
                 </div>
             </div>
         </>
-            : <div />
+            : <Spinner />
     );
 }
 

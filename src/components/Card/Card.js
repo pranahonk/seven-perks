@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Card = ({ data = [], isSport , height = "260"}) => {
     let navigate = useNavigate();
