@@ -110,6 +110,8 @@ button {
 body {
   font-family: "Manrope", "DM Sans", sans-serif;
   color: var(--color-text-primary);
+  min-height: 100vh;
+  position: relative;
 }
 
 .responsive-wrapper {

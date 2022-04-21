@@ -18,7 +18,6 @@ const App = () => {
                       <Route path=':publisher/:live/:year/:month/:date/:title' element={<Details />} />
                       <Route path='/bookmark' element={<Bookmark />} />
                   </Routes>
-              <Footer />
           </>
       );
 }

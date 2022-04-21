@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class Footer extends Component {
   render() {
-    return <div className="Footer">Footer</div>;
+    return <footer className="Footer">Footer</footer>;
   }
 }
 
