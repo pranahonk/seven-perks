@@ -2,7 +2,6 @@
 export const setColor = (category) =>{
     switch (category){
         case category === "sport":
-            console.log(category)
             return "#F50057";
         case category === "lifestyle":
             return "#2196F3";
