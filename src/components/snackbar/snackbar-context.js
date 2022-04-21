@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 const SnackbarContext = React.createContext({
     msg: "",
     isDisplayed: false,
-    displayMsg: (msg) => {},
+    bgColor: "",
+    displayMsg: (msg, bgColor) => {},
     onClose: () => {},
 });
 
@@ -13,9 +14,11 @@ let timer;
 export const SnackBarContextProvider = (props) => {
     const [msg, setMsg] = useState("");
     const [isDisplayed, setIsDisplayed] = useState(false);
+    const [bgColor, setBgColor] = useState("");
 
-    const displayHandler = (msg) => {
+    const displayHandler = (msg, bgColor) => {
         setMsg(msg);
+        setBgColor(bgColor);
         setIsDisplayed(true);
         timer = setTimeout(() => {
             closeHandler();
@@ -31,6 +34,7 @@ export const SnackBarContextProvider = (props) => {
             value={{
                 msg,
                 isDisplayed,
+                bgColor,
                 displayMsg: displayHandler,
                 onClose: closeHandler,
             }}

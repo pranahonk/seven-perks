@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const Header = () => {
     return (
-        <div>
+        <>
             <header className="header">
                 <div className="header-content responsive-wrapper">
                     <div className="header-logo">
@@ -19,7 +19,7 @@ const Header = () => {
                     </nav>
                 </div>
             </header>
-        </div>
+        </>
     );
 };
 

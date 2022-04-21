@@ -51,7 +51,7 @@ function Home() {
     }, [selectedOption])
 
     return (
-        <div>
+        <>
             <div className="container">
                 <div className="mt-5 row">
                     <div className="App-headline col-8">
@@ -95,7 +95,7 @@ function Home() {
 
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
