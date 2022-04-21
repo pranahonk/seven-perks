@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import "./App.scss";
-import { Routes, Route } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Details from "./pages/details";
 import Header from "./components/header";
 import Footer from "./components/footer/Footer";
-
-
 
 
 const App = () => {

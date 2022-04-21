@@ -25,13 +25,16 @@ function Details(props) {
 
     useEffect(()=>{
         fetchNewsData(pathname)
-    }, [])
+    }, []);
+
+    const checkBookmark = (x) => {
+
+    }
 
     const addToBookMark = (data) => {
         setSessionStorage(data)
         const msg = "hello";
 
-        console.log(snackbarCtx.displayMsg(msg))
         snackbarCtx.displayMsg(msg);
     }
 
