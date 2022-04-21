@@ -50,6 +50,8 @@ function Details(props) {
     }, []);
 
 
+
+
     const addToBookMark = (data) => {
         setSessionStorage(data)
 
