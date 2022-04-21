@@ -12,9 +12,21 @@ import {
 } from "../assets/helpers/helpers";
 import SnackbarContext from "../components/snackbar/snackbar-context";
 import Snackbar from "../components/snackbar";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    addToBookmark,
+    decrementCounter,
+    deleteBookmark,
+    incrementCounter,
+    setCounter
+} from "../store/actions/counterActions";
+
 
 function Details(props) {
     const api = new Api;
+    const dispatch = useDispatch();
+    const counter = useSelector((state) => state.counter);
+
     const [detail, setDetail] = useState("");
     const [button, setButton] = useState("");
     const [snackbarMsg, setSnackbarMsg] = useState("");
@@ -50,8 +62,6 @@ function Details(props) {
     }, []);
 
 
-
-
     const addToBookMark = (data) => {
         setSessionStorage(data)
 
@@ -61,6 +71,18 @@ function Details(props) {
     return (
         detail ?
         <>
+            <h2>The count is: {counter.bookmark}</h2>
+            <p>
+                <button onClick={() => dispatch(addToBookmark(detail))}>INCREMENT</button>
+            </p>
+
+            <p>
+                <button onClick={() => dispatch(deleteBookmark(detail))}>DECREMENT</button>
+            </p>
+
+            <p>
+                <button onClick={() => dispatch(setCounter(5))}>Set to 5!</button>
+            </p>
             <div className="container">
                 {snackbarCtx.isDisplayed && <Snackbar />}
                 <div className="row">
