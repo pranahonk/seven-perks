@@ -34,12 +34,12 @@ function Details(props) {
     useEffect(()=>{
         if( getSessionStorage(detail) ){
             setButton("REMOVE")
-            setSnackbarMsg("removed from bookmarks")
+            setSnackbarMsg(" removed from bookmarks".toUpperCase())
             setSnackbarBg("#D32F2F")
         }
         else{
             setButton("ADD")
-            setSnackbarMsg("saved to bookmarks")
+            setSnackbarMsg(" saved to bookmarks".toUpperCase())
             setSnackbarBg("#388E3C")
         }
 
