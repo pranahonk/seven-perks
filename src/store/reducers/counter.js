@@ -1,7 +1,7 @@
 import {
     ADD_BOOKMARK,
     REMOVE_BOOKMARK,
-    SET_COUNTER
+    CHECK_BOOKMARK
 } from "../actions/counterActions";
 
 // ESTADO INICIAL
@@ -13,20 +13,20 @@ const initialState = {
 export const counter = (state = initialState, action) => {
     console.log(action)
     switch (action.type) {
-        case SET_COUNTER:
+        case CHECK_BOOKMARK:
             return {
                 ...state,
-                bookmark: action.payload
+                bookmark: state.bookmark.findIndex(element => element.id === action.payload.id)
             };
         case ADD_BOOKMARK:
             return {
                 ...state,
-                count: state.bookmark.push(action.payload)
+                bookmark: state.bookmark.push(action.payload)
             };
         case REMOVE_BOOKMARK:
             return {
                 ...state,
-                count: state.bookmark.splice(action.payload, 1)
+                bookmark: state.bookmark.splice(action.payload, 1)
             };
         default:
             return state;
