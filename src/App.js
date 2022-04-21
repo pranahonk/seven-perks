@@ -9,7 +9,7 @@ import Footer from "./components/footer/Footer";
 
 const App = () => {
       return (
-          <div>
+          <>
               <Header />
                   <Routes>
                       <Route path='/' element={<Home />} />
@@ -17,7 +17,7 @@ const App = () => {
                       <Route path=':publisher/:live/:year/:month/:date/:title' element={<Details />} />
                   </Routes>
               <Footer />
-          </div>
+          </>
       );
 }
 
