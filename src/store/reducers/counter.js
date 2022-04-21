@@ -2,10 +2,11 @@ import {
     ADD_BOOKMARK,
     REMOVE_BOOKMARK,
 } from "../actions/counterActions";
+import {getSessionStorage, setSessionStorage} from "../../assets/helpers/helpers";
 
 // ESTADO INICIAL
 const initialState = {
-    bookmark: [],
+    bookmark: getSessionStorage() || [],
     title: ""
 };
 
@@ -14,7 +15,7 @@ export const counter = (state = initialState, action) => {
         case ADD_BOOKMARK:
             return {
                 ...state,
-                counter: state.bookmark.push(action.payload)
+                counter: state.bookmark.push(action.payload),
             };
         case REMOVE_BOOKMARK:
             return {

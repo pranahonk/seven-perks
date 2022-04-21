@@ -59,6 +59,8 @@ export const setSessionStorage = (data) => {
         const search =  JSON.parse(exist).findIndex(element => element.id === data.id);
         let parsing = JSON.parse(exist);
 
+        sessionStorage.setItem('bookmark', JSON.stringify(parsing));
+
         if(search === -1){
 
             parsing.push(data)
@@ -77,17 +79,10 @@ export const setSessionStorage = (data) => {
 }
 
 
-export const getSessionStorage = (data) => {
+export const getSessionStorage = () => {
 
-    let exist =  sessionStorage.getItem('bookmark');
+    return JSON.parse(sessionStorage.getItem('bookmark'));
 
-    if (exist){
-        const search =  JSON.parse(exist).findIndex(element => element.id === data.id);
-        return search > -1
-
-    }else{
-       return false
-    }
 
 }
 
