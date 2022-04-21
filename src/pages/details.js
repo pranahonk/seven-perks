@@ -1,14 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Api from "../API/service";
 import "./detail.scss";
 import {convertDate, getDayOfWeek, getHoursAndMinutes, setSessionStorage} from "../assets/helpers/helpers";
+import SnackbarContext from "../components/snackbar/snackbar-context";
+import Snackbar from "../components/snackbar";
 
 function Details(props) {
     const api = new Api;
     const [detail, setDetail] = useState("");
     let { pathname } = useLocation();
+
+    const snackbarCtx = useContext(SnackbarContext);
 
     const fetchNewsData = (path) => {
         api.getDetailNews(path)
@@ -25,12 +29,17 @@ function Details(props) {
 
     const addToBookMark = (data) => {
         setSessionStorage(data)
+        const msg = "hello";
+
+        console.log(snackbarCtx.displayMsg(msg))
+        snackbarCtx.displayMsg(msg);
     }
 
     return (
         detail ?
-        <div>
+        <>
             <div className="container">
+                {snackbarCtx.isDisplayed && <Snackbar />}
                 <div className="row">
                     <div className="col-8">
                         <div className="mt-5">
@@ -120,9 +129,8 @@ function Details(props) {
                         <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
                     </div>
                 </div>
-
             </div>
-        </div>
+        </>
             : <div />
     );
 }
