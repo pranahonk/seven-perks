@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import placeholder from "../../assets/images/The-peaks.png"
 
 // eslint-disable-next-line react/prop-types
 const CardMultiple = ({data = [], color = "#F50057"}) => {
@@ -7,7 +8,7 @@ const CardMultiple = ({data = [], color = "#F50057"}) => {
     return (
         <div>
             <div style={{borderBottom: `3px solid ${color}`}}>
-                <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
+                <img src={placeholder} alt="Placeholder" width="100%"/>
                 <div className="Content-Card">
                     <div className="Content-title">
                         {data.webTitle}

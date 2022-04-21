@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Card from "../Card/Card";
 import "./Content.scss"
 import {setColor} from "../../assets/helpers/helpers"
+import placeholder from "../../assets/images/The-peaks.png"
 
 
 const Content = ({newsData, color = "#F50057"}) => {
@@ -22,7 +23,7 @@ const Content = ({newsData, color = "#F50057"}) => {
             <div className="col-3">
                 <div style={{borderBottom: `3px solid ${setLineColor(1)}`}}>
                     <div style={{borderBottom: `3px solid ${color}`}}>
-                        <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
+                        <img src={placeholder} alt="Placeholder" width="100%"/>
                         <div className="Content-Card">
                             <div className="Content-title">
                                 {
@@ -45,7 +46,7 @@ const Content = ({newsData, color = "#F50057"}) => {
             <div className="col-3">
                 <div style={{borderBottom: `3px solid ${setLineColor(3)}`}}>
                     <div style={{borderBottom: `3px solid ${color}`}}>
-                        <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
+                        <img src={placeholder} alt="Placeholder" width="100%"/>
                         <div className="Content-Card">
                             <div className="Content-title">
                                 {

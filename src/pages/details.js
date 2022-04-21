@@ -10,6 +10,7 @@ import Body from "../components/body/body";
 import {useDispatch, useSelector} from "react-redux";
 import {addToBookmark, deleteBookmark} from "../store/actions/counterActions";
 import Spinner from "../components/spinner";
+import placeholder from "../assets/images/The-peaks.png"
 
 
 function Details(props) {
@@ -107,7 +108,7 @@ function Details(props) {
 
                     </div>
                     <div className="col-4">
-                        <img src="https://via.placeholder.com/728x728.png?text=PLACEHOLDER" alt="Placeholder" width="100%"/>
+                        <img src={placeholder} alt="Placeholder" width="100%"/>
                     </div>
                 </div>
             </div>
