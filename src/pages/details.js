@@ -3,23 +3,18 @@ import {useLocation} from "react-router-dom";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Api from "../API/service";
 import "./detail.scss";
-import {
-    convertDate,
-    getDayOfWeek,
-    getHoursAndMinutes,
-    getSessionStorage,
-    setSessionStorage
-} from "../assets/helpers/helpers";
+import {convertDate, getDayOfWeek, getHoursAndMinutes} from "../assets/helpers/helpers";
 import SnackbarContext from "../components/snackbar/snackbar-context";
 import Snackbar from "../components/snackbar";
 import {useDispatch, useSelector} from "react-redux";
-import {addToBookmark, checkBookmark, deleteBookmark} from "../store/actions/counterActions";
+import {addToBookmark, deleteBookmark} from "../store/actions/counterActions";
 
 
 function Details(props) {
     const api = new Api;
     const dispatch = useDispatch();
     const counter = useSelector((state) => state.counter);
+
 
     const [detail, setDetail] = useState("");
     const [button, setButton] = useState("");
@@ -38,7 +33,8 @@ function Details(props) {
     }
 
     useEffect(()=>{
-        if( getSessionStorage(detail) ){
+        console.log(counter.bookmark)
+        if( counter.bookmark.findIndex(element => element.id === detail.id) > -1 ){
             setButton("REMOVE")
             setSnackbarMsg(" removed from bookmarks".toUpperCase())
             setSnackbarBg("#D32F2F")
@@ -49,7 +45,7 @@ function Details(props) {
             setSnackbarBg("#388E3C")
         }
 
-    }, [detail])
+    }, [detail, counter])
 
     useEffect(()=>{
         fetchNewsData(pathname)
@@ -57,8 +53,11 @@ function Details(props) {
 
 
     const addToBookMark = (data) => {
-        setSessionStorage(data)
-        console.log(counter.bookmark.findIndex(element => element.id === data.id))
+        if( counter.bookmark.findIndex(element => element.id === data.id) === -1 ){
+            dispatch(addToBookmark(data))
+        }else{
+            dispatch(deleteBookmark(data))
+        }
 
         snackbarCtx.displayMsg(snackbarMsg, snackbarBg);
     }
@@ -66,18 +65,6 @@ function Details(props) {
     return (
         detail ?
         <>
-            <h2>The count is: {counter.bookmark}</h2>
-            <p>
-                <button onClick={() => dispatch(addToBookmark(detail))}>INCREMENT</button>
-            </p>
-
-            <p>
-                <button onClick={() => dispatch(deleteBookmark(detail))}>DECREMENT</button>
-            </p>
-
-            <p>
-                <button onClick={() => dispatch(checkBookmark(detail))}>Set to 5!</button>
-            </p>
             <div className="container">
                 {snackbarCtx.isDisplayed && <Snackbar />}
                 <div className="row">
