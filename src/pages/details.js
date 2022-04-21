@@ -3,13 +3,22 @@ import {useLocation} from "react-router-dom";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Api from "../API/service";
 import "./detail.scss";
-import {convertDate, getDayOfWeek, getHoursAndMinutes, setSessionStorage} from "../assets/helpers/helpers";
+import {
+    convertDate,
+    getDayOfWeek,
+    getHoursAndMinutes,
+    getSessionStorage,
+    setSessionStorage
+} from "../assets/helpers/helpers";
 import SnackbarContext from "../components/snackbar/snackbar-context";
 import Snackbar from "../components/snackbar";
 
 function Details(props) {
     const api = new Api;
     const [detail, setDetail] = useState("");
+    const [button, setButton] = useState("");
+    const [snackbarMsg, setSnackbarMsg] = useState("");
+    const [snackbarBg, setSnackbarBg] = useState("");
     let { pathname } = useLocation();
 
     const snackbarCtx = useContext(SnackbarContext);
@@ -17,25 +26,34 @@ function Details(props) {
     const fetchNewsData = (path) => {
         api.getDetailNews(path)
             .then((res)=>{
-                console.log(res.data.response.content);
                 setDetail(res.data.response.content);
             })
             .catch((err) => console.log(err));
     }
 
     useEffect(()=>{
+        if( getSessionStorage(detail) ){
+            setButton("REMOVE")
+            setSnackbarMsg("removed from bookmarks")
+            setSnackbarBg("#D32F2F")
+        }
+        else{
+            setButton("ADD")
+            setSnackbarMsg("saved to bookmarks")
+            setSnackbarBg("#388E3C")
+        }
+
+    }, [detail])
+
+    useEffect(()=>{
         fetchNewsData(pathname)
     }, []);
 
-    const checkBookmark = (x) => {
-
-    }
 
     const addToBookMark = (data) => {
         setSessionStorage(data)
-        const msg = "hello";
 
-        snackbarCtx.displayMsg(msg);
+        snackbarCtx.displayMsg(snackbarMsg, snackbarBg);
     }
 
     return (
@@ -47,7 +65,7 @@ function Details(props) {
                     <div className="col-8">
                         <div className="mt-5">
                             <button className="btn-bookmark" onClick={()=> addToBookMark(detail)} style={{cursor: "pointer"}}>
-                                <BsFillBookmarkFill color="white" /> &nbsp;&nbsp; ADD BOOKMARK
+                                <BsFillBookmarkFill color="white" /> &nbsp;&nbsp; {button} BOOKMARK
                             </button>
                         </div>
                         <div className="mt-3">

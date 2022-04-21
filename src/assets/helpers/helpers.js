@@ -78,7 +78,6 @@ export const getSessionStorage = (data) => {
 
     if (exist){
         const search =  JSON.parse(exist).findIndex(element => element.id === data.id);
-
         return search > -1
 
     }else{

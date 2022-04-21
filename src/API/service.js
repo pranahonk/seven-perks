@@ -26,7 +26,7 @@ export default class Api {
     };
 
     getSportsNews = (orderBy = "newest", pageSize = 5) => {
-        return this.init().get(`/search?section=sport?order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
+        return this.init().get(`/sport??order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
     };
 
     getDetailNews = (detail) => {
