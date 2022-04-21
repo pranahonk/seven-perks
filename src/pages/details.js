@@ -12,6 +12,7 @@ import {
 } from "../assets/helpers/helpers";
 import SnackbarContext from "../components/snackbar/snackbar-context";
 import Snackbar from "../components/snackbar";
+import Spinner from "../components/spinner";
 
 function Details(props) {
     const api = new Api;
