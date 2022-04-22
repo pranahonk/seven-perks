@@ -3,38 +3,52 @@ $tl: 0.6s; // transition length
 .search-box {
   transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
   width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
+  height: 53px;
+  border-radius: 0;
+  border-bottom: 3px solid white;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   cursor: pointer;
   background: transparent;
   position: relative;
-  top: 5px;
-  right: 4px;
-  & + label .search-icon {    color: black    }
+  bottom: -91px;
+  right: 23%;
+  transform: translate(50%, -50%);
+  & + label .search-icon {
+    color: black    }
   &:hover {
     color: white;
-    background: rgb(200, 200, 200);
-    box-shadow: 0 0 0 5px rgb(61, 71, 82);
+    background: #2153A3;
     & + label .search-icon {    color: white    }
   }
   &:focus {
     transition: width $tl cubic-bezier(0,1.22,.66,1.39), border-radius $tl, background $tl;
-    border: none;outline: none;
+    outline: none;
     box-shadow: none;
     padding-left: 15px;
     cursor: text;
     width: 300px;
     border-radius: auto;
-    background: rgb(235, 235, 235);
+    background: #2153A3;
+    border-bottom: 3px solid white;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
     color: black;
-    & + label .search-icon {    color: black;    }
+    right: 59%;
+    & + label .search-icon {
+      color: black;
+    }
   }
-  &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
+  &:not(:focus) {
+    text-indent:-5000px;
+  } // for more-graceful falling back (:not browsers likely support indent)
 }
 
 #search-submit {
-  position: relative;left: -5000px;
+  position: relative;
+  left: -5000px;
 }
 
 .search-icon {
@@ -44,7 +58,7 @@ $tl: 0.6s; // transition length
   align-self: center;
   position: relative;
   z-index: 10;
-  top: 8px;
+  top: 25px;
   right: 32px;
   cursor: pointer;
 }
