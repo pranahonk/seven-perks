@@ -6,6 +6,7 @@ import Content from "../components/content";
 import Card from "../components/Card/Card";
 import {useNavigate} from "react-router-dom";
 import Spinner from "../components/spinner";
+import {useSelector} from "react-redux";
 
 
 function Home() {
@@ -13,8 +14,9 @@ function Home() {
     const [selectedOption, setSelectedOption] = useState("");
     const [newsData, setNewsData] = useState([]);
     const [sportsData, setSportsData] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const counter = useSelector((state) => state.counter);
 
     const options = [
         {
@@ -51,10 +53,26 @@ function Home() {
             .catch((err) => console.log(err));
     }
 
+    const fetchSearchData = (query) => {
+        api.getSearch(query)
+            .then((res)=>{
+                setSportsData(res.data.response.results);
+                setLoading(false);
+                console.log(res.data.response.results);
+            })
+            .catch((err) => console.log(err));
+    }
+
     useEffect(()=>{
         if (selectedOption) fetchNewsData(selectedOption, 8);
         if (selectedOption) fetchSportsData(selectedOption, 3);
-    }, [selectedOption])
+    }, [selectedOption]);
+
+
+    useEffect(()=>{
+        if(counter.search?.length > 0) fetchSearchData(counter.search);
+    }, [counter])
+
 
     useEffect(()=>{
         setLoading(true)

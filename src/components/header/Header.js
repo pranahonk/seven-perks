@@ -2,7 +2,6 @@ import React from "react";
 import "./Header.scss"
 import logo from "../../assets/images/White.png"
 import Search from "../search";
-import PropTypes from "prop-types";
 
 const Header = () => {
     return (
@@ -15,7 +14,7 @@ const Header = () => {
                         </a>
                     </div>
                     <nav className="header-nav">
-                        <Search />
+                        <Search  />
                     </nav>
                 </div>
             </header>

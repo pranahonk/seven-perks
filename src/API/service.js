@@ -32,4 +32,8 @@ export default class Api {
     getDetailNews = (detail) => {
         return this.init().get(`${this.api_url}/${detail}?api-key=${this.api_key}`)
     }
+
+    getSearch = (query) => {
+        return this.init().get(`/search?q=${encodeURIComponent(query)}&api-key=${this.api_key}`)
+    }
 }
