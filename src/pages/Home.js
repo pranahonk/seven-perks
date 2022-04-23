@@ -6,11 +6,13 @@ import Content from "../components/content";
 import Card from "../components/Card/Card";
 import {useNavigate} from "react-router-dom";
 import Spinner from "../components/spinner";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {searchIndex, setSearchResult} from "../store/actions/counterActions";
 
 
 function Home() {
     const api = new Api;
+    const dispatch = useDispatch();
     const [selectedOption, setSelectedOption] = useState("");
     const [newsData, setNewsData] = useState([]);
     const [sportsData, setSportsData] = useState([]);
@@ -56,7 +58,7 @@ function Home() {
     const fetchSearchData = (query) => {
         api.getSearch(query)
             .then((res)=>{
-                setSportsData(res.data.response.results);
+                dispatch(setSearchResult(res.data.response.results));
                 setLoading(false);
                 console.log(res.data.response.results);
             })

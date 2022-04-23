@@ -79,10 +79,7 @@ export const setSessionStorage = (data) => {
 }
 
 
-export const getSessionStorage = () => {
-
-    return JSON.parse(sessionStorage.getItem('bookmark'));
-
-
+export const getSessionStorage = (key) => {
+    return JSON.parse(sessionStorage.getItem(key));
 }
 

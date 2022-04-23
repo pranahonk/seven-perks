@@ -1,11 +1,12 @@
-import {ADD_BOOKMARK, REMOVE_BOOKMARK, SEARCH_INDEX} from "../actions/counterActions";
+import {ADD_BOOKMARK, REMOVE_BOOKMARK, SEARCH_INDEX, SET_SEARCH_RESULT} from "../actions/counterActions";
 import {getSessionStorage} from "../../assets/helpers/helpers";
 
 // ESTADO INICIAL
 const initialState = {
-    bookmark: getSessionStorage() || [],
+    bookmark: getSessionStorage('bookmark') || [],
     title: "",
-    search: ""
+    search: "",
+    searchResult: getSessionStorage('search_result') || []
 };
 
 export const counter = (state = initialState, action) => {
@@ -24,6 +25,11 @@ export const counter = (state = initialState, action) => {
             return {
                 ...state,
                 search: action.payload
+            }
+        case SET_SEARCH_RESULT:
+            return {
+                ...state,
+                searchResult: action.payload
             }
         default:
             return state;

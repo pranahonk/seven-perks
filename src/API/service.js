@@ -34,6 +34,6 @@ export default class Api {
     }
 
     getSearch = (query) => {
-        return this.init().get(`/search?q=${encodeURIComponent(query)}&api-key=${this.api_key}`)
+        return this.init().get(`/search?q=${encodeURI(query)}&api-key=${this.api_key}`)
     }
 }
