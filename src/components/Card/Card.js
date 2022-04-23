@@ -1,14 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {useNavigate} from "react-router-dom";
 import placeholder from "../../assets/images/The-peaks.png"
 
-const Card = ({ data = [], isSport , height = "260"}) => {
-    let navigate = useNavigate();
+const Card = ({ data = [], isSport , height = "260", useParams=""}) => {
 
     const goToDetail = (x) => {
-        navigate(`${x}`);
-
+        const base_url = window.location.origin;
+        window.location.href = `${base_url}/${x}`;
     }
 
     return (
@@ -32,8 +30,8 @@ const Card = ({ data = [], isSport , height = "260"}) => {
 Card.propTypes = {
     data: PropTypes.any,
     isSport: PropTypes.bool,
-    height: PropTypes.string
-
+    height: PropTypes.string,
+    useParams: PropTypes.string
 };
 
 export default Card;

@@ -6,7 +6,7 @@ const initialState = {
     bookmark: getSessionStorage('bookmark') || [],
     title: "",
     search: "",
-    searchResult: getSessionStorage('search_result') || []
+    searchResult: [],
 };
 
 export const counter = (state = initialState, action) => {

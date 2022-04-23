@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Select from "../select";
 import {useNavigate, useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setSearchResult} from "../../store/actions/counterActions";
 import Api from "../../API/service";
 
 const Filter = ({selectOption, title}) => {
-    const [selectedOption, setSelectedOption] = useState("");
-    const counter = useSelector((state) => state.counter);
+    const [selectedOption, setSelectedOption] = useState("newest");
     const navigate = useNavigate();
-    const location = useParams()
+    const location = useParams();
     const api = new Api;
     const dispatch = useDispatch();
     const options = [
@@ -39,9 +38,8 @@ const Filter = ({selectOption, title}) => {
 
 
     useEffect(() => {
-        console.log(location)
-        if (counter.search?.trim()?.length > 0) fetchSearchData(counter.search, selectedOption);
-    }, [counter])
+        if (location.id?.trim()?.length > 0) fetchSearchData(location.id, selectedOption);
+    }, [location])
 
 
     useEffect(()=>{
