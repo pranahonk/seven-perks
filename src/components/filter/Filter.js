@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import Select from "../select";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setSearchResult} from "../../store/actions/counterActions";
 import Api from "../../API/service";
@@ -11,6 +11,7 @@ const Filter = ({selectOption, title}) => {
     const [selectedOption, setSelectedOption] = useState("");
     const counter = useSelector((state) => state.counter);
     const navigate = useNavigate();
+    const location = useParams()
     const api = new Api;
     const dispatch = useDispatch();
     const options = [
@@ -32,13 +33,13 @@ const Filter = ({selectOption, title}) => {
         api.getSearch(query, selectedOption)
             .then((res)=>{
                 dispatch(setSearchResult(res.data.response.results));
-                console.log(res.data.response.results);
             })
             .catch((err) => console.log(err));
     }
 
 
     useEffect(() => {
+        console.log(location)
         if (counter.search?.trim()?.length > 0) fetchSearchData(counter.search, selectedOption);
     }, [counter])
 

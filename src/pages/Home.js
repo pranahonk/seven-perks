@@ -1,24 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import Api from "../API/service";
-import {BsFillBookmarkFill} from "react-icons/bs";
-import Select from "../components/select";
 import Content from "../components/content";
 import Card from "../components/Card/Card";
-import {useNavigate} from "react-router-dom";
 import Spinner from "../components/spinner";
-import {useDispatch, useSelector} from "react-redux";
-import {setSearchResult} from "../store/actions/counterActions";
 import Filter from "../components/filter";
 
 
 function Home() {
     const api = new Api;
-    const dispatch = useDispatch();
     const [selectedOption, setSelectedOption] = useState("");
     const [newsData, setNewsData] = useState([]);
     const [sportsData, setSportsData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const counter = useSelector((state) => state.counter);
 
     const fetchNewsData = (orderBy, length) => {
         api.getNews(orderBy, length)
