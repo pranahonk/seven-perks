@@ -26,14 +26,14 @@ export default class Api {
     };
 
     getSportsNews = (orderBy = "newest", pageSize = 5) => {
-        return this.init().get(`/sport??order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
+        return this.init().get(`/sport?order-by=${orderBy}&page-size=${pageSize}&api-key=${this.api_key}`);
     };
 
     getDetailNews = (detail) => {
         return this.init().get(`${this.api_url}/${detail}?api-key=${this.api_key}`)
     }
 
-    getSearch = (query) => {
-        return this.init().get(`/search?q=${encodeURI(query)}&api-key=${this.api_key}`)
+    getSearch = (query, orderBy) => {
+        return this.init().get(`/search?q=${encodeURI(query)}&order-by=${orderBy}&api-key=${this.api_key}`)
     }
 }

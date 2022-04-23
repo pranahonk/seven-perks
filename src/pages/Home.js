@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import Spinner from "../components/spinner";
 import {useDispatch, useSelector} from "react-redux";
 import {setSearchResult} from "../store/actions/counterActions";
+import Filter from "../components/filter";
 
 
 function Home() {
@@ -17,23 +18,7 @@ function Home() {
     const [newsData, setNewsData] = useState([]);
     const [sportsData, setSportsData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
     const counter = useSelector((state) => state.counter);
-
-    const options = [
-        {
-            "key":  "newest",
-            "value" : "Newest First"
-        },
-        {
-            "key":  "oldest",
-            "value" : "Oldest First"
-        },
-        {
-            "key":  "relevance",
-            "value" : "Most Popular"
-        }
-    ];
 
     const fetchNewsData = (orderBy, length) => {
         api.getNews(orderBy, length)
@@ -55,15 +40,6 @@ function Home() {
             .catch((err) => console.log(err));
     }
 
-    const fetchSearchData = (query) => {
-        api.getSearch(query)
-            .then((res)=>{
-                dispatch(setSearchResult(res.data.response.results));
-                setLoading(false);
-                console.log(res.data.response.results);
-            })
-            .catch((err) => console.log(err));
-    }
 
     useEffect(()=>{
         if (selectedOption) fetchNewsData(selectedOption, 8);
@@ -72,12 +48,7 @@ function Home() {
 
 
     useEffect(()=>{
-        if(counter.search?.trim()?.length > 0) fetchSearchData(counter.search);
-    }, [counter])
-
-
-    useEffect(()=>{
-        setLoading(true)
+        setLoading(false)
     }, [])
 
     return (
@@ -85,19 +56,7 @@ function Home() {
             {
                 !loading  ?
                     <div className="container">
-                        <div className="mt-5 row">
-                            <div className="App-headline col-8">
-                                Top Stories
-                            </div>
-                            <div className="col-2">
-                                <button className="btn-bookmark" onClick={()=> navigate("/bookmark")} style={{cursor: "pointer"}}>
-                                    <BsFillBookmarkFill color="white" /> &nbsp;&nbsp; VIEW BOOKMARK
-                                </button>
-                            </div>
-                            <div className="col-2">
-                                <Select options={options} onChange={setSelectedOption} />
-                            </div>
-                        </div>
+                        <Filter selectOption={setSelectedOption} title={"Top Stories"}  />
                         <Content newsData={newsData} />
                         <div className="row mt-3">
                             {
