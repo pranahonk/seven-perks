@@ -7,7 +7,7 @@ import Card from "../components/Card/Card";
 import {useNavigate} from "react-router-dom";
 import Spinner from "../components/spinner";
 import {useDispatch, useSelector} from "react-redux";
-import {searchIndex, setSearchResult} from "../store/actions/counterActions";
+import {setSearchResult} from "../store/actions/counterActions";
 
 
 function Home() {
