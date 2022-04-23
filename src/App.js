@@ -6,6 +6,7 @@ import Details from "./pages/details";
 import Bookmark from "./pages/bookmark";
 import Header from "./components/header";
 import SearchResult from "./pages/searchResult";
+import Footer from "./components/footer";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                       <Route path='/bookmark' element={<Bookmark />} />
                       <Route path='/search/:id' element={<SearchResult />} />
                   </Routes>
+              <Footer />
           </>
       );
 }

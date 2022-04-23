@@ -39,7 +39,7 @@ const Filter = ({selectOption, title}) => {
 
     useEffect(() => {
         if (location.id?.trim()?.length > 0) fetchSearchData(location.id, selectedOption);
-    }, [location])
+    }, [location, selectedOption])
 
 
     useEffect(()=>{

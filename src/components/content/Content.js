@@ -12,6 +12,11 @@ const Content = ({newsData, color = "#F50057"}) => {
         setColor(newsData[index]?.pillarName?.toLowerCase())
     }
 
+    const goToDetail = (x) => {
+        const base_url = window.location.origin;
+        window.location.href = `${base_url}/${x}`;
+    }
+
 
     return (
         <div className="row mt-4">
@@ -21,8 +26,8 @@ const Content = ({newsData, color = "#F50057"}) => {
                 </div>
             </div>
             <div className="col-3">
-                <div style={{borderBottom: `3px solid ${setLineColor(1)}`}}>
-                    <div style={{borderBottom: `3px solid ${color}`}}>
+                <div style={{borderBottom: `3px solid ${setLineColor(1)}`, cursor: "pointer"}} onClick={()=> goToDetail(newsData[1]?.id)}>
+                    <div style={{borderBottom: `3px solid ${setLineColor(1)}`}}>
                         <img src={placeholder} alt="Placeholder" width="100%"/>
                         <div className="Content-Card">
                             <div className="Content-title">
@@ -33,7 +38,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-2" style={{borderBottom: `3px solid ${setLineColor(2)}`}}>
+                <div className="mt-2" style={{borderBottom: `3px solid ${setLineColor(2)}`, cursor: "pointer"}} onClick={()=> goToDetail(newsData[2]?.id)}>
                     <div className="Content-Card-small">
                         <div className="Content-title">
                             {
@@ -44,7 +49,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                 </div>
             </div>
             <div className="col-3">
-                <div style={{borderBottom: `3px solid ${setLineColor(3)}`}}>
+                <div style={{borderBottom: `3px solid ${setLineColor(3)}`, cursor: "pointer"}} onClick={()=> goToDetail(newsData[3]?.id)}>
                     <div style={{borderBottom: `3px solid ${color}`}}>
                         <img src={placeholder} alt="Placeholder" width="100%"/>
                         <div className="Content-Card">
@@ -56,7 +61,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-2" style={{borderBottom: `3px solid ${setLineColor(4)}`}}>
+                <div className="mt-2" style={{borderBottom: `3px solid ${setLineColor(4)}`, cursor: "pointer"}} onClick={()=> goToDetail(newsData[4]?.id)}>
                     <div className="Content-Card-small">
                         <div className="Content-title">
                             {
