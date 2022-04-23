@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Details from "./pages/details";
 import Bookmark from "./pages/bookmark";
 import Header from "./components/header";
-import Footer from "./components/footer/Footer";
+import SearchResult from "./pages/searchResult";
 
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
                       <Route path=':publisher/:year/:month/:date/:title' element={<Details />} />
                       <Route path=':publisher/:live/:year/:month/:date/:title' element={<Details />} />
                       <Route path='/bookmark' element={<Bookmark />} />
+                      <Route path='/search/:id' element={<SearchResult />} />
                   </Routes>
           </>
       );

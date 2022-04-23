@@ -16,7 +16,7 @@ root.render(
           <Provider store={store}>
               <SnackBarContextProvider>
                   <App />
-              </SnackBarContextProvider>,
+              </SnackBarContextProvider>
           </Provider>
       </Router>
   </React.StrictMode>

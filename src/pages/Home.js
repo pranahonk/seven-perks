@@ -72,7 +72,7 @@ function Home() {
 
 
     useEffect(()=>{
-        if(counter.search?.length > 0) fetchSearchData(counter.search);
+        if(counter.search?.trim()?.length > 0) fetchSearchData(counter.search);
     }, [counter])
 
 
