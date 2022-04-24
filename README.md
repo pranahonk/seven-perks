@@ -6,6 +6,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## ENV
+```angular2html
+REACT_APP_BASE_URL=https://content.guardianapis.com/
+REACT_APP_API_KEY=a1931c85-0f03-4199-a39c-acca334f9595
+
+```
+
 ### `npm start`
 
 Runs the app in the development mode.\
