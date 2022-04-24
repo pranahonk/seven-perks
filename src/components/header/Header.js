@@ -8,14 +8,20 @@ const Header = () => {
         <>
             <header className="header">
                 <div className="header-content responsive-wrapper">
-                    <div className="header-logo">
-                        <a href="/" className="logo">
-                            <img alt="react-logo" src={logo}/>
-                        </a>
+                    <div className="row">
+                        <div className="col-xl-10 col-lg-10 col-md-12 col-12 d-flex align-items-center">
+                            <div className="header-logo">
+                                <a href="/" className="logo">
+                                    <img alt="react-logo" src={logo}/>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <nav className="header-nav">
-                        <Search  />
-                    </nav>
+                    <div className="col-xl-2 col-lg-2 col-md-12 col-12">
+                        <nav className="header-nav">
+                            <Search  />
+                        </nav>
+                    </div>
                 </div>
             </header>
         </>

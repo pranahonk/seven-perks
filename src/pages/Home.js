@@ -55,7 +55,7 @@ function Home() {
                             {
                                 newsData.slice(5).map((data, index) =>{
                                     return(
-                                        <div key={index} className="col-4">
+                                        <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-xl-o mt-lg-0 mt-md-2 mt-sm-2 mt-2">
                                             <Card data={data}  />
                                         </div>
                                     )
@@ -70,7 +70,7 @@ function Home() {
                             {
                                 sportsData.map((data, index) =>{
                                     return(
-                                        <div key={index} className="col-4">
+                                        <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-xl-o mt-lg-0 mt-md-2 mt-sm-2 mt-2">
                                             <Card data={data} isSport />
                                         </div>
                                     )

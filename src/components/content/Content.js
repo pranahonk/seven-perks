@@ -20,12 +20,12 @@ const Content = ({newsData, color = "#F50057"}) => {
 
     return (
         <div className="row mt-4">
-            <div className="col-6">
+            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-xl-0 mt-lg-0 mt-md-0 mt-sm-2">
                 <div style={{borderBottom: `3px solid ${setLineColor(0)}`}}>
                     <Card data={newsData[0]}/>
                 </div>
             </div>
-            <div className="col-3">
+            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12 mt-xl-0 mt-lg-0 mt-md-2 mt-sm-2 mt-2">
                 <div style={{borderBottom: `3px solid ${setLineColor(1)}`, cursor: "pointer"}} onClick={()=> goToDetail(newsData[1]?.id)}>
                     <div style={{borderBottom: `3px solid ${setLineColor(1)}`}}>
                         <img src={placeholder} alt="Placeholder" width="100%"/>
@@ -48,7 +48,7 @@ const Content = ({newsData, color = "#F50057"}) => {
                     </div>
                 </div>
             </div>
-            <div className="col-3">
+            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12 mt-xl-0 mt-lg-0 mt-md-2 mt-sm-2 mt-2">
                 <div style={{borderBottom: `3px solid ${setLineColor(3)}`, cursor: "pointer"}} onClick={()=> goToDetail(newsData[3]?.id)}>
                     <div style={{borderBottom: `3px solid ${color}`}}>
                         <img src={placeholder} alt="Placeholder" width="100%"/>

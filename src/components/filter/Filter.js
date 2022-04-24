@@ -48,15 +48,15 @@ const Filter = ({selectOption, title}) => {
 
     return (
         <div className="mt-5 row">
-            <div className="App-headline col-8">
+            <div className="App-headline col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
                 {title}
             </div>
-            <div className="col-2">
+            <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
                 <button className="btn-bookmark" onClick={() => navigate("/bookmark")} style={{cursor: "pointer"}}>
                     <BsFillBookmarkFill color="white"/> &nbsp;&nbsp; VIEW BOOKMARK
                 </button>
             </div>
-            <div className="col-2">
+            <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
                 <Select options={options} onChange={setSelectedOption}/>
             </div>
         </div>

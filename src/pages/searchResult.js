@@ -26,7 +26,7 @@ function SearchResult(props) {
                             {
                                 counter.searchResult?.map((option, index) => {
                                     return (
-                                        <div className="col-4 mt-3" key={index}>
+                                        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 mt-3" key={index}>
                                             <Card data={option} isSport={false} useParams={location.pathname} />
                                         </div>
                                     )
